@@ -45,11 +45,13 @@ export default function App() {
       <BrowserRouter>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Header />
-          <Switch>
-            <Route path="/" exact={true} component={Home} />
-            <Route path="/login" exact={true} component={Login} />
-            <Route path="/register" exact={true} component={Register} />
-          </Switch>
+          <div className="container">
+            <Switch>
+              <Route path="/" exact={true} component={Home} />
+              <Route path="/login" exact={true} component={Login} />
+              <Route path="/register" exact={true} component={Register} />
+            </Switch>
+          </div>
         </UserContext.Provider>
       </BrowserRouter>
     </>

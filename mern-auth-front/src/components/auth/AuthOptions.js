@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 export default function AuthOptions() {
+  const { userData, setUserData } = useContext(UserContext);
   const history = useHistory();
 
   const register = () => {
@@ -11,10 +13,22 @@ export default function AuthOptions() {
   const login = () => {
     history.push("/login");
   };
+     
+  const logout = () => {
+    setUserData({ token: undefined, user: undefined });
+    localStorage.setItem("auth-token", "");
+  };
   return (
     <nav className="auth-options">
-      <button onClick={register}>Register</button>
-      <button onClick={login}>Log in</button>
+      {userData.user ? (
+        <button onClick={logout}>Logout</button>
+      ) : (
+        <>
+          {" "}
+          <button onClick={register}>Register</button>
+          <button onClick={login}>Log in</button>
+        </>
+      )}
     </nav>
   );
 }
