@@ -16,7 +16,9 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.test {
+  max-width: 900px;
+}
 .error-notice button {
   background-color: #df4343;
   width: 20px;
